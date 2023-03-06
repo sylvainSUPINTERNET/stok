@@ -27,16 +27,17 @@ class WifiChecker {
             } ?:run {
                 Log.d("STOK_CONNECTION_STATE", "No connection, retry")
 
-                // TODO toast try to connect
                 if ( !wifiManager.isWifiEnabled ) {
                     AlertDialog
                         .Builder(ctx)
                         .setTitle("Wi-Fi is disabled")
                         .setMessage("Application requires internet connection.")
                         .setPositiveButton("Enable Wi-Fi") { _, _ ->
-
+                            checkWifi(ctx);
                         }
-                        .setNegativeButton("Cancel", null)
+                        .setNegativeButton("Cancel", { _, _ ->
+                            checkWifi(ctx);
+                        })
                         .show()
                 }
 

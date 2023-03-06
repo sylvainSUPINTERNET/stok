@@ -10,6 +10,7 @@ import androidx.activity.result.contract.ActivityResultContracts.StartActivityFo
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.stok.databinding.ActivityMainBinding
+import com.example.stok.utils.WifiChecker
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +23,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        WifiChecker.checkWifi(this);
 
 
 
