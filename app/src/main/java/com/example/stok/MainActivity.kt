@@ -9,7 +9,10 @@ import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.example.stok.databinding.ActivityMainBinding
+import com.example.stok.ui.symbol.SymbolItem
+import com.example.stok.ui.symbol.SymbolRecycleViewAdapter
 import com.example.stok.utils.WifiChecker
 
 
@@ -25,6 +28,16 @@ class MainActivity : AppCompatActivity() {
 
 
         WifiChecker.checkWifi(this);
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+        val items = listOf (
+                SymbolItem(name="HGEL"),
+                SymbolItem(name="JEJnx"),
+                SymbolItem(name="JEJnx"),
+                SymbolItem(name="JEJnx")    )
+        recyclerView.adapter = SymbolRecycleViewAdapter(items)
+
+
 
 
 
