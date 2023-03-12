@@ -42,12 +42,13 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        val items = listOf (
-                SymbolItem(name="HGEL"),
-                SymbolItem(name="JEJnx"),
-                SymbolItem(name="JEJnx"),
-                SymbolItem(name="JEJnx")    )
 
-        recyclerView.adapter = SymbolRecycleViewAdapter(items)
+//        val items = listOf (
+//                SymbolItem(name="HGEL"),
+//                SymbolItem(name="JEJnx"),
+//                SymbolItem(name="JEJnx"),
+//                SymbolItem(name="JEJnx")    )
+//
+//        recyclerView.adapter = SymbolRecycleViewAdapter(items)
     }
 }
