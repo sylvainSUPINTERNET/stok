@@ -1,5 +1,6 @@
 package com.example.stok.ui.symbol
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.stok.R
 
 
-class SymbolRecycleViewAdapter(private val symbolItemsList:List<SymbolItem>): RecyclerView.Adapter<SymbolRecycleViewAdapter.ViewHolder>() {
+class SymbolRecycleViewAdapter(private var symbolItemsList:MutableList<SymbolItem>): RecyclerView.Adapter<SymbolRecycleViewAdapter.ViewHolder>() {
+
+
+    fun insertNewSymbol (newSymbol: SymbolItem) {
+        Log.d("STOCK-ADDING", "insertNewSymbol: ${newSymbol.name}")
+        symbolItemsList = symbolItemsList.toMutableList().apply { add(newSymbol) }
+        notifyItemInserted(symbolItemsList.lastIndex)
+    }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameView: TextView = itemView.findViewById(R.id.name)

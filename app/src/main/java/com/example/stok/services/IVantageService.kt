@@ -10,7 +10,7 @@ interface IVantageService {
     // ?symbol={symbol}&token={apiKey}
     @GET("quote")
     fun getStockCurrentPrice(
-        @Query("symbol") symbol: String,
+        @Query("symbol") symbol: String, // 1 symbol = 1 call API so even we batch, count as "normal" call ...
         @Query("token") apiKey: String
     ): Call<CurrentStockPrice>
 
