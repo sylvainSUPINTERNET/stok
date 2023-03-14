@@ -22,7 +22,6 @@ class VantageRepository(private val vantageService: IVantageService) {
             Log.d("STOCK", "getStockCurrentPrice: ${symbol[i]}")
             vantageService.getStockCurrentPrice(symbol[i], apiKey).enqueue(
                 object: Callback<CurrentStockPrice> {
-
                     override fun onResponse(call: Call<CurrentStockPrice>, response: Response<CurrentStockPrice>) {
                         val currentStockPrice = response.body()
                         Log.d("STOCK-RESPONSE", "onResponse: ${currentStockPrice?.c}")
