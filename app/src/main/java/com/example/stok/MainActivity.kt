@@ -50,51 +50,28 @@ class MainActivity : AppCompatActivity() {
 
 
         vantageRepository.currentStockPriceData.observe(this, { currentStockPrice ->
-                Log.d("STOCK-ADDING", "onCreate: ${currentStockPrice}")
+                Log.d("STOCK-ADDING-OBSERVER", "onCreate: ${currentStockPrice}")
                 if ( !currentStockPrice.isEmpty() ) {
-                    adapter.insertNewSymbol(SymbolItem(name = "${currentStockPrice[currentStockPrice.size - 1].c}"))
+                    Log.d("STOCK-ADDING-RECYCLEVIEW", "${currentStockPrice[currentStockPrice.size - 1].c}")
+                    adapter.insertNewSymbol(SymbolItem(name = "${currentStockPrice[currentStockPrice.size - 1].c}") )
+
+/*
+                    adapter.insertNewSymbol(SymbolItem(name = "${currentStockPrice[currentStockPrice.size - 1].c}") )
+*/
                 }
-//               Log.d("STOCK-ADDING", "onCreate: ${currentStockPrice.symbol} ${currentStockPrice.price}")
-//                adapter.insertNewSymbol(SymbolItem(name = currentStockPrice.symbol))
         });
-
-
 
         vantageRepository.getStockCurrentPrice(listOf(
             "NVDA",
             "GWW",
             "RE",
         ), "cg6ekq9r01qjg4hg7i6gcg6ekq9r01qjg4hg7i70")
+    }
 
 
 
-
-//        val items = listOf (
-//                SymbolItem(name="HGEL"),
-//                SymbolItem(name="JEJnx"),
-//                SymbolItem(name="JEJnx"),
-//                SymbolItem(name="JEJnx")    )
-//
-//        recyclerView.adapter = SymbolRecycleViewAdapter(items)
-
-
-/*        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.openweathermap.org/data/2.5/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val weatherService = retrofit.create(WeatherService::class.java)
-        weatherRepository = WeatherRepository(weatherService)
-
-        val city = "Paris"
-        val apiKey = "YOUR_API_KEY_HERE"
-
-        weatherRepository.getWeather(city, apiKey)
-
-        weatherRepository.weatherData.observe(this, Observer { weatherData ->
-            // Update the UI with the weather data
-            // TODO: Display weather data to user
-        })*/
-
+    override fun onDestroy() {
+        super.onDestroy()
+        // TODO remove observer
     }
 }

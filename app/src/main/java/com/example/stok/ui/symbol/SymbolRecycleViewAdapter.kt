@@ -14,8 +14,10 @@ class SymbolRecycleViewAdapter(private var symbolItemsList:MutableList<SymbolIte
 
     fun insertNewSymbol (newSymbol: SymbolItem) {
         Log.d("STOCK-ADDING", "insertNewSymbol: ${newSymbol.name}")
-        symbolItemsList = symbolItemsList.toMutableList().apply { add(newSymbol) }
-        notifyItemInserted(symbolItemsList.lastIndex)
+        if (!symbolItemsList.any { it.name == newSymbol.name }) {
+            symbolItemsList = symbolItemsList.toMutableList().apply { add(newSymbol) }
+            notifyItemInserted(symbolItemsList.lastIndex)
+        }
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
